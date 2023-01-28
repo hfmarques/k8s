@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busy-security-cap
+spec:
+  containers:
+    - name: sec-busy
+      image: busybox
+      securityContext:
+        capabilities:
+          add: ["SYS_TIME"]
+      command: ["sh", "-c", "sleep 1h"]

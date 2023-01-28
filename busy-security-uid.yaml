@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busy-security-uid
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+  containers:
+    - name: sec-busy
+      image: busybox
+      securityContext:
+        runAsUser: 2000
+        runAsGroup: 2000
+      command: ["sh", "-c", "sleep 1h"]
